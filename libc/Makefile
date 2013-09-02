@@ -121,21 +121,20 @@ LSRCS := ${LSRCS} ${unwanted_file}
 .endif
 .endfor
 
-NLS=	C.msg Pig.msg ca.msg cs.msg de.msg es.msg fi.msg fr.msg nl.msg \
-	no.msg pl.msg sk.msg sv.msg
+#NLS=	C.msg Pig.msg ca.msg cs.msg de.msg es.msg fi.msg fr.msg nl.msg \
+#	no.msg pl.msg sk.msg sv.msg
 
-realall: tags
-tags: ${SRCS}
-	${_MKTARGET_CREATE}
-	-${TOOL_CTAGS} -w ${.ALLSRC:M*.c}
-	-egrep "^ENTRY(.*)|^FUNC(.*)|^SYSCALL(.*)" /dev/null ${.ALLSRC:M*.S} | \
-	    sed "s;\([^:]*\):\([^(]*\)(\([^, )]*\)\(.*\);\3 \1 /^\2(\3\4$$/;" \
-	    >> ${.TARGET}; sort -o ${.TARGET} ${.TARGET}
-
-FILES=		tags
-FILESNAME=	libc.tags
-FILESDIR=	/var/db
-
+#realall: tags
+#tags: ${SRCS}
+	#${_MKTARGET_CREATE}
+	##-${TOOL_CTAGS} -w ${.ALLSRC:M*.c}
+	#-egrep "^ENTRY(.*)|^FUNC(.*)|^SYSCALL(.*)" /dev/null ${.ALLSRC:M*.S} | \
+	    #sed "s;\([^:]*\):\([^(]*\)(\([^, )]*\)\(.*\);\3 \1 /^\2(\3\4$$/;" \
+	    #>> ${.TARGET}; sort -o ${.TARGET} ${.TARGET}
+#
+#FILES=		tags
+#FILESNAME=	libc.tags
+#FILESDIR=	/var/db
 
 # workaround for I18N stuffs: build singlebyte setlocale() for libc.a,
 # multibyte for libc.so.  the quirk should be removed when we support
@@ -146,3 +145,8 @@ CSHLIBFLAGS+=	-D_I18N_DYNAMIC
 
 # force the dynamic linker to initialize libc first
 SHLIB_SHFLAGS+=	-Wl,-z,initfirst
+
+CPPFLAGS+= -D__NetBSD__ -DNO_FLOATING_POINT
+
+# XXX: makecontext()
+CFLAGS+= -Wno-strict-prototypes
