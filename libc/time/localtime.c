@@ -32,7 +32,7 @@ __weak_alias(daylight,_daylight)
 __weak_alias(tzname,_tzname)
 #endif
 
-#include "float.h"	/* for FLT_MAX and DBL_MAX */
+//#include "float.h"	/* for FLT_MAX and DBL_MAX */
 
 #ifndef TZ_ABBR_MAX_LEN
 #define TZ_ABBR_MAX_LEN	16

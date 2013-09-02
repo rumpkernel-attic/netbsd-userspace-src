@@ -52,7 +52,7 @@ SUBDIR=compat
 .include <bsd.subdir.mk>
 .else
 COMPATDIR=${.CURDIR}/compat
-.include "${.CURDIR}/compat/Makefile.inc"
+# .include "${.CURDIR}/compat/Makefile.inc"
 # Marker for compat code that can't be easily isolated
 CPPFLAGS+=	-D__BUILD_LEGACY
 .endif
@@ -61,10 +61,10 @@ CPPFLAGS+=	-D__BUILD_LEGACY
 .include "${.CURDIR}/atomic/Makefile.inc"
 .include "${.CURDIR}/cdb/Makefile.inc"
 .include "${.CURDIR}/db/Makefile.inc"
-.include "${.CURDIR}/citrus/Makefile.inc"
-.include "${.CURDIR}/compat-43/Makefile.inc"
-.include "${.CURDIR}/dlfcn/Makefile.inc"
-.include "${.CURDIR}/gdtoa/Makefile.inc"
+# .include "${.CURDIR}/citrus/Makefile.inc"
+# .include "${.CURDIR}/compat-43/Makefile.inc"
+# .include "${.CURDIR}/dlfcn/Makefile.inc"
+# .include "${.CURDIR}/gdtoa/Makefile.inc"
 .include "${.CURDIR}/gen/Makefile.inc"
 .include "${.CURDIR}/gmon/Makefile.inc"
 .include "${.CURDIR}/hash/Makefile.inc"
@@ -86,16 +86,16 @@ CPPFLAGS+=	-D__BUILD_LEGACY
 .include "${.CURDIR}/regex/Makefile.inc"
 .endif
 .include "${.CURDIR}/resolv/Makefile.inc"
-.include "${.CURDIR}/rpc/Makefile.inc"
-.include "${.CURDIR}/ssp/Makefile.inc"
+# .include "${.CURDIR}/rpc/Makefile.inc"
+# .include "${.CURDIR}/ssp/Makefile.inc"
 .include "${.CURDIR}/stdio/Makefile.inc"
 .include "${.CURDIR}/stdlib/Makefile.inc"
 .include "${.CURDIR}/string/Makefile.inc"
 .include "${.CURDIR}/termios/Makefile.inc"
 .include "${.CURDIR}/thread-stub/Makefile.inc"
 .include "${.CURDIR}/time/Makefile.inc"
-.include "${.CURDIR}/tls/Makefile.inc"
-.include "${.CURDIR}/sys/Makefile.inc"
+# .include "${.CURDIR}/tls/Makefile.inc"
+# .include "${.CURDIR}/sys/Makefile.inc"
 .include "${.CURDIR}/uuid/Makefile.inc"
 .if (${MKYP} != "no")
 .include "${.CURDIR}/yp/Makefile.inc"

@@ -163,9 +163,9 @@ do_mvis(wchar_t *dst, wint_t c, int flags, wint_t nextc, const wchar_t *extra)
 	    /* Space at the end of the line */
 	    ((iswspace(c) && (nextc == L'\r' || nextc == L'\n')) ||
 	    /* Out of range */
-	    (!iswspace(c) && (c < 33 || (c > 60 && c < 62) || c > 126)) ||
+	    (!iswspace(c) && (c < 33 || (c > 60 && c < 62) || c > 126)))) {
 	    /* Specific char to be escaped */
-	    wcschr(L"#$@[\\]^`{|}~", c) != NULL)) {
+	    //wcschr(L"#$@[\\]^`{|}~", c) != NULL)) {
 		*dst++ = L'=';
 		*dst++ = XTOA(((unsigned int)c >> 4) & 0xf);
 		*dst++ = XTOA((unsigned int)c & 0xf);

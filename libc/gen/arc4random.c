@@ -152,7 +152,7 @@ arc4_stir(struct arc4_stream *as)
 	as->stirred = 1;
 }
 
-static __always_inline uint8_t
+static uint8_t
 arc4_getbyte_ij(struct arc4_stream *as, uint8_t *i, uint8_t *j)
 {
 	uint8_t si, sj;

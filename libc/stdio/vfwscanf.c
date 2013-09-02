@@ -102,7 +102,9 @@ __RCSID("$NetBSD: vfwscanf.c,v 1.10 2013/05/17 12:55:57 joerg Exp $");
 #define	CT_INT		3	/* %[dioupxX] conversion */
 #define	CT_FLOAT	4	/* %[efgEFG] conversion */
 
+#ifndef NO_FLOATING_POINT
 static int parsefloat(FILE *, wchar_t *, wchar_t *, locale_t);
+#endif
 
 #define	INCCL(_c)	\
 	(cclcompl ? (wmemchr(ccls, (_c), (size_t)(ccle - ccls)) == NULL) : \

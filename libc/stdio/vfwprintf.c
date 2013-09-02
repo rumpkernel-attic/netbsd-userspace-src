@@ -46,6 +46,10 @@ __RCSID("$NetBSD: vfwprintf.c,v 1.32 2013/05/17 12:55:57 joerg Exp $");
  * Actual {w,}printf innards.
  */
 
+#ifndef NARROW
+#define NARROW
+#endif
+
 #include "namespace.h"
 #include <sys/types.h>
 
@@ -662,7 +666,7 @@ WDECL(__vf,printf_unlocked_l)(FILE *fp, locale_t loc, const CHAR_T *fmt0, va_lis
 	char expchar;		/* exponent character: [eEpP\0] */
 	int expsize;		/* character count for expstr */
 	int lead;		/* sig figs before decimal or group sep */
-	int ndig;		/* actual number of digits returned by dtoa */
+	int ndig = -1;		/* actual number of digits returned by dtoa */
 	CHAR_T expstr[MAXEXPDIG+2];	/* buffer for exponent string: e+ZZZ */
 	int nseps;		/* number of group separators with ' */
 	int nrepeats;		/* number of repeats of the last group */
@@ -821,8 +825,6 @@ WDECL(__vf,printf_unlocked_l)(FILE *fp, locale_t loc, const CHAR_T *fmt0, va_lis
 
 	_SET_ORIENTATION(fp, -1);
 
-	ndig = -1;	/* XXX gcc */
-
 	thousands_sep = '\0';
 	grouping = NULL;
 #ifndef NO_FLOATING_POINT
@@ -879,9 +881,11 @@ WDECL(__vf,printf_unlocked_l)(FILE *fp, locale_t loc, const CHAR_T *fmt0, va_lis
 		prec = -1;
 		sign = '\0';
 		ox[1] = '\0';
+#ifndef NO_FLOATING_POINT
 		expchar = '\0';
 		lead = 0;
 		nseps = nrepeats = 0;
+#endif
 		ulval = 0;
 		ujval = 0;
 		xdigs = NULL;
