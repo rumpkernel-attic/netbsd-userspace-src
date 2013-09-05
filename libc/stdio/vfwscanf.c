@@ -180,6 +180,7 @@ __vfwscanf_unlocked_l(FILE * __restrict fp, locale_t loc,
 	base = 0;
 	cclcompl = 0;
 	mbp = NULL;
+	p = NULL;
 	for (;;) {
 		c = *fmt++;
 		if (c == 0)
