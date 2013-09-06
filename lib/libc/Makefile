@@ -61,7 +61,7 @@ CPPFLAGS+=	-D__BUILD_LEGACY
 .include "${.CURDIR}/atomic/Makefile.inc"
 .include "${.CURDIR}/cdb/Makefile.inc"
 .include "${.CURDIR}/db/Makefile.inc"
-# .include "${.CURDIR}/citrus/Makefile.inc"
+.include "${.CURDIR}/citrus/Makefile.inc"
 # .include "${.CURDIR}/compat-43/Makefile.inc"
 .include "${.CURDIR}/dlfcn/Makefile.inc"
 .include "${.CURDIR}/gdtoa/Makefile.inc"
