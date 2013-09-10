@@ -1,4 +1,4 @@
-#	$NetBSD: Makefile,v 1.80 2013/03/21 16:49:11 christos Exp $
+#	$NetBSD: Makefile,v 1.82 2013/08/15 22:38:24 matt Exp $
 #
 
 WARNS?=	5
@@ -58,6 +58,9 @@ SRCS+=	sem.c
 .if exists(${ARCHDIR}/pthread_md.S)
 SRCS+= pthread_md.S
 .endif
+.if exists(${ARCHDIR}/Makefile.inc)
+.include "${ARCHDIR}/Makefile.inc"
+.endif
 
 # The PTHREAD__COMPAT flag builds a libpthread that can be dropped
 # into a NetBSD 2/3/4 chroot with a NetBSD 5 or later kernel.
@@ -75,21 +78,28 @@ SRCS+=		pthread_compat.c
 
 ALIGN_FUNCTIONS=	${${ACTIVE_CC} == "gcc":? -falign-functions=32 :}
 
+.if ${MACHINE_ARCH} == "m68k" || ${MACHINE_ARCH} == "m68000" || \
+    ${MACHINE_CPU} == "sh3" || ${MACHINE_ARCH} == "vax"
+OMIT_FRAME_POINTER=
+.else
+OMIT_FRAME_POINTER=	-fomit-frame-pointer
+.endif
+
 # The TSD routines are used in the implementation of profiling, and so
 # can't be profiled themselves.
-COPTS.pthread_specific.c+=	-fomit-frame-pointer ${ALIGN_FUNCTIONS}
+COPTS.pthread_specific.c+=	${OMIT_FRAME_POINTER} ${ALIGN_FUNCTIONS}
 pthread_specific.po: pthread_specific.o
 	${_MKTARGET_CREATE}
 	cp pthread_specific.o pthread_specific.po
 
 # Internal spinlock routines are performance critical.  Don't profile them,
 # it's incompatibile with -fomit-frame-pointer.
-COPTS.pthread_lock.c+=	-fomit-frame-pointer ${ALIGN_FUNCTIONS}
+COPTS.pthread_lock.c+=	${OMIT_FRAME_POINTER} ${ALIGN_FUNCTIONS}
 pthread_lock.po: pthread_lock.o
 	${_MKTARGET_CREATE}
 	cp pthread_lock.o pthread_lock.po
 
-COPTS.pthread_mutex.c+=	-fomit-frame-pointer ${ALIGN_FUNCTIONS}
+COPTS.pthread_mutex.c+=	${OMIT_FRAME_POINTER} ${ALIGN_FUNCTIONS}
 pthread_mutex.po: pthread_mutex.o
 	${_MKTARGET_CREATE}
 	cp pthread_mutex.o pthread_mutex.po

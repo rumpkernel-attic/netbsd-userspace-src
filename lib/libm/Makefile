@@ -1,4 +1,4 @@
-#  $NetBSD: Makefile,v 1.139 2013/06/20 19:49:47 christos Exp $
+#  $NetBSD: Makefile,v 1.141 2013/08/22 08:24:30 martin Exp $
 #
 #  @(#)Makefile 5.1beta 93/09/24
 #
@@ -66,7 +66,11 @@ COMMON_SRCS+= fenv.c
 COMMON_SRCS+= s_fma.c s_fmaf.c s_fmal.c
 .elif (${MACHINE_ARCH} == "sparc64")
 .PATH: ${.CURDIR}/arch/sparc64
-COMMON_SRCS+= fenv.c
+COMMON_SRCS+= fenv.c s_nexttowardf.c \
+	s_nearbyint.c s_rintl.c
+.ifndef _COMPAT_M32_MK_
+COMMON_SRCS+= s_nexttoward.c
+.endif
 COMMON_SRCS+= s_fma.c s_fmaf.c s_fmal.c
 .elif ((${MACHINE_ARCH} == "i386") || (${MACHINE_ARCH} == "x86_64"))
 
