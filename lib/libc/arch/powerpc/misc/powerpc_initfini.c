@@ -1,11 +1,9 @@
-/*	$NetBSD: _strerror_r.c,v 1.3 2008/04/28 20:23:00 martin Exp $	*/
-
 /*-
- * Copyright (c) 2005 The NetBSD Foundation, Inc.
+ * Copyright (c) 2013 The NetBSD Foundation, Inc.
  * All rights reserved.
  *
  * This code is derived from software contributed to The NetBSD Foundation
- * by Christos Zoulas.
+ * by Matt Thomas of 3am Software Foundry.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -28,22 +26,39 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+
 #include <sys/cdefs.h>
-#if defined(LIBC_SCCS) && !defined(lint)
-__RCSID("$NetBSD: _strerror_r.c,v 1.3 2008/04/28 20:23:00 martin Exp $");
-#endif /* LIBC_SCCS and not lint */
 
-#if defined(__indr_reference)
-__indr_reference(_strerror_r, strerror_r)
-#else
+__RCSID("$NetBSD: powerpc_initfini.c,v 1.1 2013/08/30 21:28:59 matt Exp $");
 
-#include <string.h>
-int	_strerror_r(int, char *, size_t);
+#include "namespace.h"
 
-int
-strerror_r(int num, char *buf, size_t siz)
+/*
+ * Grab the cache_info at load time.
+ */
+
+#include <sys/param.h>
+#include <sys/sysctl.h>
+#include <sys/queue.h>
+#include <sys/cpu.h>
+
+#include <stdbool.h>
+#include <stddef.h>
+
+__dso_hidden struct cache_info _libc_powerpc_cache_info;
+
+static void _libc_cache_info_init(void)
+    __attribute__((__constructor__, __used__));
+
+void __section(".text.startup")
+_libc_cache_info_init(void)
 {
-
-	return _strerror_r(num, buf, siz);
+	static bool initialized;
+	if (!initialized) {
+		const int name[2] = { CTL_MACHDEP, CPU_CACHEINFO };
+		size_t len = sizeof(_libc_powerpc_cache_info);
+		(void)sysctl(name, __arraycount(name),
+		    &_libc_powerpc_cache_info, &len, NULL, 0);
+		initialized = 1;
+	}
 }
-#endif
