@@ -46,10 +46,6 @@ __RCSID("$NetBSD: vfwprintf.c,v 1.32 2013/05/17 12:55:57 joerg Exp $");
  * Actual {w,}printf innards.
  */
 
-#ifndef NARROW
-#define NARROW
-#endif
-
 #include "namespace.h"
 #include <sys/types.h>
 
