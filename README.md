@@ -7,4 +7,5 @@ Unless you really know what you're doing, it's best to use the
 contents of this repo only via rumpuser-xen.
 
 The ultimate target is to merge support back into the NetBSD libc and
-make this repo superfluous.
+make this repo superfluous.  The changes are available by running
+`git diff netbsd-cvs master`.
