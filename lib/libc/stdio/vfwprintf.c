@@ -662,7 +662,7 @@ WDECL(__vf,printf_unlocked_l)(FILE *fp, locale_t loc, const CHAR_T *fmt0, va_lis
 	char expchar;		/* exponent character: [eEpP\0] */
 	int expsize;		/* character count for expstr */
 	int lead;		/* sig figs before decimal or group sep */
-	int ndig = -1;		/* actual number of digits returned by dtoa */
+	int ndig;		/* actual number of digits returned by dtoa */
 	CHAR_T expstr[MAXEXPDIG+2];	/* buffer for exponent string: e+ZZZ */
 	int nseps;		/* number of group separators with ' */
 	int nrepeats;		/* number of repeats of the last group */
