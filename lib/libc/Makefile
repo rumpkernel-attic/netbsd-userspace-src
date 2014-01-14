@@ -98,7 +98,12 @@ CPPFLAGS+=	-D__BUILD_LEGACY
 .include "${.CURDIR}/thread-stub/Makefile.inc"
 .include "${.CURDIR}/time/Makefile.inc"
 # .include "${.CURDIR}/tls/Makefile.inc"
+
+# We want just a few wrappers out of libc/sys
 # .include "${.CURDIR}/sys/Makefile.inc"
+.PATH: ${.CURDIR}/sys
+SRCS+=  posix_fadvise.c statvfs.c semctl.c
+
 .if ${HAVE_LIBGCC} == "no"
 .include "${NETBSDSRCDIR}/sys/lib/libunwind/Makefile.inc"
 .endif
