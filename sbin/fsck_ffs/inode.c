@@ -358,8 +358,10 @@ swap_dinode1(union dinode *dp, int n)
 		    doinglevel2 ||
 		    (maxsymlinklen < 0) ||
 		    (iswap64(dp1->di_size) > (uint64_t)maxsymlinklen)) {
-			for (j = 0; j < (UFS_NDADDR + UFS_NIADDR); j++)
+			for (j = 0; j < UFS_NDADDR; j++)
 			    dp1->di_db[j] = bswap32(dp1->di_db[j]);
+			for (j = 0; j < UFS_NIADDR; j++)
+			    dp1->di_ib[j] = bswap32(dp1->di_ib[j]);
 		}
 	}
 }
@@ -374,8 +376,12 @@ swap_dinode2(union dinode *dp, int n)
 	for (i = 0; i < n; i++, dp2++) {
 		ffs_dinode2_swap(dp2, dp2);
 		if ((iswap16(dp2->di_mode) & IFMT) != IFLNK) {
-			for (j = 0; j < (UFS_NDADDR + UFS_NIADDR + UFS_NXADDR); j++)
+			for (j = 0; j < UFS_NXADDR; j++)
 				dp2->di_extb[j] = bswap64(dp2->di_extb[j]);
+			for (j = 0; j < UFS_NDADDR; j++)
+				dp2->di_db[j] = bswap64(dp2->di_db[j]);
+			for (j = 0; j < UFS_NIADDR; j++)
+				dp2->di_ib[j] = bswap64(dp2->di_ib[j]);
 		}
 	}
 }
