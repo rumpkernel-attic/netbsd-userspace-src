@@ -4,3 +4,7 @@ D/libexec////
 D/tools////
 D/sbin////
 D/crypto////
+<<<<<<< HEAD
+=======
+D/usr.sbin////
+>>>>>>> netbsd-cvs
