@@ -1,8 +1,8 @@
 netbsd-userspace-src
 ====================
 
-* Most likely you will not use the contents of this repository directly, *
-* but rather as a submodule for something interacting with rump kernels. *
+_ Most likely you will not use the contents of this repository directly, _
+_ but rather as a submodule for something interacting with rump kernels. _
 
 This repository contains a collection of NetBSD userspace sources
 that are useful for for use in conjunction with rump kernels.
