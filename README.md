@@ -1,11 +1,12 @@
-xen-nblibc
-==========
+netbsd-userspace-src
+====================
 
-A libc to be used on top of
-[rumpuser-xen](https://github.com/anttikantee/rumpuser-xen).
-Unless you really know what you're doing, it's best to use the
-contents of this repo only via rumpuser-xen.
+This repository contains a collection of NetBSD userspace sources
+that are useful for for use in conjunction with rump kernels.
+This usefulness falls under two general categories:
 
-The ultimate target is to merge support back into the NetBSD libc and
-make this repo superfluous.  The changes are available by running
-`git diff netbsd-cvs master`.
+* NetBSD libraries that allow off-the-shelf applications to run on top of
+  rump kernels without requiring an underlying OS (e.g. libc, libm,
+  libutil, libipsec)
+* NetBSD utilities that are used to configure a rump kernel or otherwise
+  useful (e.g. ifconfig, newfs, ping, sysctl, ktrace)
