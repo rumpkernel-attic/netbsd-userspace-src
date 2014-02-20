@@ -43,11 +43,12 @@ NBSRC_EXTRA='
 files () { pfx=$1; shift; for arg in $* ; do echo src/${pfx}${arg} ; done }
 
 lsfiles () {
-	files lib/lib		c ipsec m pci prop pthread util
+	files lib/lib		c crypt ipsec m pci prop pthread util y
 	files libexec/		ld.elf_so
 
 	files bin/		cat cp dd df ln ls mkdir mv rm
 
+	files sbin/		cgdconfig
 	files sbin/		disklabel dump fsck fsck_ffs ifconfig mknod
 	files sbin/		modstat mount mount_ffs newfs ping ping6
 	files sbin/		rndctl route sysctl umount
@@ -55,8 +56,9 @@ lsfiles () {
 	files usr.bin/		kdump ktrace
 	files usr.sbin/		ndp pcictl vnconfig
 
-	files external/bsd/	tcpdump
+	files external/bsd/	flex tcpdump
 	files crypto/dist/	ipsec-tools
+	files crypto/external/bsd/	openssl
 }
 
 #
