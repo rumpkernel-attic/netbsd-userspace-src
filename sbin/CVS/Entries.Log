@@ -1,1 +1,16 @@
+A D/disklabel////
+A D/dump////
+A D/fsck////
+A D/fsck_ffs////
+A D/ifconfig////
+A D/mknod////
+A D/modstat////
+A D/mount////
+A D/mount_ffs////
+A D/newfs////
+A D/ping////
+A D/ping6////
 A D/rndctl////
+A D/route////
+A D/sysctl////
+A D/umount////

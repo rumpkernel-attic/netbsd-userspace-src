@@ -1,8 +1,1 @@
-D/ifconfig////
-D/sysctl////
-D/ping////
-D/ping6////
-D/route////
-D/mount////
-D/mount_ffs////
-D/modstat////
+D
