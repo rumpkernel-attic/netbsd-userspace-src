@@ -2,9 +2,4 @@
 /README/1.3/Fri May  3 21:17:07 1996//D2013.12.09.20.00.00
 /changelog/1.2/Fri May  3 21:20:56 1996//D2013.12.09.20.00.00
 /db2netbsd/1.2/Tue Feb 16 18:01:37 1999//D2013.12.09.20.00.00
-D/btree////
-D/db////
-D/hash////
-D/man////
-D/mpool////
-D/recno////
+D

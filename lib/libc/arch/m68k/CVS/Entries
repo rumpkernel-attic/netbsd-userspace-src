@@ -2,12 +2,4 @@
 /Makefile.inc/1.16/Thu Jul 18 21:31:22 2013//D2013.12.09.20.00.00
 /SYS.h/1.18/Wed Jul 24 15:38:07 2013//D2013.12.09.20.00.00
 /genassym.cf/1.1/Wed Jul 17 01:41:17 2013//D2013.12.09.20.00.00
-D/gdtoa////
-D/gen////
-D/hardfloat////
-D/net////
-D/quad////
-D/softfloat////
-D/stdlib////
-D/string////
-D/sys////
+D
