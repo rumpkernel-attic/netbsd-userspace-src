@@ -64,7 +64,7 @@ lsfiles () {
 #
 
 SRCDIR=./newsrc
-export CVSROOT=:pserver:anoncvs@anoncvs.netbsd.org:/cvsroot
+export CVSROOT=anoncvs@anoncvs.netbsd.org:/cvsroot
 CVSFLAGS="-z3"
 GITREPOPUSH='git@github.com:rumpkernel/netbsd-userspace-src'
 
@@ -73,9 +73,6 @@ checkoutcvs ()
 
 	mkdir -p ${SRCDIR} || die cannot access ${SRCDIR}
 	cd ${SRCDIR} || die cannot access ${SRCDIR}
-
-	# squelch .cvspass whine
-	export CVS_PASSFILE=/dev/null
 
 	# trick cvs into "skipping" the module name so that we get
 	# all the sources directly into $SRCDIR
