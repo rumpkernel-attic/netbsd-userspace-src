@@ -57,6 +57,7 @@ lsfiles () {
 	files usr.sbin/		ndp pcictl vnconfig
 
 	files external/bsd/	flex tcpdump
+	files crypto/		Makefile.openssl
 	files crypto/dist/	ipsec-tools
 	files crypto/external/bsd/	openssl
 }
