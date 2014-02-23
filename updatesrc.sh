@@ -51,7 +51,7 @@ lsfiles () {
 	files sbin/		cgdconfig
 	files sbin/		disklabel dump fsck fsck_ffs ifconfig mknod
 	files sbin/		modstat mount mount_ffs newfs ping ping6
-	files sbin/		rndctl route sysctl umount
+	files sbin/		raidctl rndctl route sysctl umount
 
 	files usr.bin/		kdump ktrace
 	files usr.sbin/		ndp pcictl vnconfig
