@@ -11,6 +11,7 @@ A D/mount_ffs////
 A D/newfs////
 A D/ping////
 A D/ping6////
+A D/raidctl////
 A D/rndctl////
 A D/route////
 A D/sysctl////
