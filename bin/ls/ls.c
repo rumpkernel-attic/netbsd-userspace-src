@@ -1,4 +1,4 @@
-/*	$NetBSD: ls.c,v 1.70 2012/11/20 12:37:29 abs Exp $	*/
+/*	$NetBSD: ls.c,v 1.73 2014/02/22 13:08:13 mlelstv Exp $	*/
 
 /*
  * Copyright (c) 1989, 1993, 1994
@@ -42,7 +42,7 @@ __COPYRIGHT("@(#) Copyright (c) 1989, 1993, 1994\
 #if 0
 static char sccsid[] = "@(#)ls.c	8.7 (Berkeley) 8/5/94";
 #else
-__RCSID("$NetBSD: ls.c,v 1.70 2012/11/20 12:37:29 abs Exp $");
+__RCSID("$NetBSD: ls.c,v 1.73 2014/02/22 13:08:13 mlelstv Exp $");
 #endif
 #endif /* not lint */
 
@@ -111,13 +111,15 @@ int f_stream;			/* stream format */
 int f_type;			/* add type character for non-regular files */
 int f_typedir;			/* add type character for directories */
 int f_whiteout;			/* show whiteout entries */
+int f_fullpath;			/* print full pathname, not filename */
+int f_leafonly;			/* when recursing, print leaf names only */
 
 __dead static void
 usage(void)
 {
 
 	(void)fprintf(stderr,
-	    "usage: %s [-1AaBbCcdFfghikLlMmnopqRrSsTtuWwx] [file ...]\n",
+	    "usage: %s [-1AaBbCcdFfghikLlMmnOoPpqRrSsTtuWwXx] [file ...]\n",
 	    getprogname());
 	exit(EXIT_FAILURE);
 	/* NOTREACHED */
@@ -149,7 +151,8 @@ ls_main(int argc, char *argv[])
 		f_listdot = 1;
 
 	fts_options = FTS_PHYSICAL;
-	while ((ch = getopt(argc, argv, "1ABCFLMRSTWabcdfghiklmnopqrstuwx")) != -1) {
+	while ((ch = getopt(argc, argv, "1AaBbCcdFfghikLlMmnOoPpqRrSsTtuWwXx"))
+	    != -1) {
 		switch (ch) {
 		/*
 		 * The -1, -C, -l, -m and -x options all override each other so
@@ -253,8 +256,14 @@ ls_main(int argc, char *argv[])
 			f_longform = 1;
 			f_column = f_columnacross = f_singlecol = f_stream = 0;
 			break;
+		case 'O':
+			f_leafonly = 1;
+			break;
 		case 'o':
 			f_flags = 1;
+			break;
+		case 'P':
+			f_fullpath = 1;
 			break;
 		case 'p':
 			f_typedir = 1;
@@ -288,6 +297,9 @@ ls_main(int argc, char *argv[])
 			f_nonprint = 0;
 			f_octal = 0;
 			f_octal_escape = 0;
+			break;
+		case 'X':
+			fts_options |= FTS_XDEV;
 			break;
 		default:
 		case '?':
@@ -446,11 +458,13 @@ traverse(int argc, char *argv[], int options)
 			 * a separator.  If multiple arguments, precede each
 			 * directory with its name.
 			 */
-			if (output)
-				(void)printf("\n%s:\n", p->fts_path);
-			else if (argc > 1) {
-				(void)printf("%s:\n", p->fts_path);
-				output = 1;
+			if (!f_leafonly) {
+				if (output)
+					(void)printf("\n%s:\n", p->fts_path);
+				else if (argc > 1) {
+					(void)printf("%s:\n", p->fts_path);
+					output = 1;
+				}
 			}
 
 			chp = fts_children(ftsp, ch_options);
