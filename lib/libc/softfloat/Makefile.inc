@@ -1,4 +1,4 @@
-#	$NetBSD: Makefile.inc,v 1.15 2013/04/30 01:42:04 matt Exp $
+#	$NetBSD: Makefile.inc,v 1.17 2014/01/30 19:11:54 matt Exp $
 
 SOFTFLOAT_BITS?=64
 .PATH:		${ARCHDIR}/softfloat \
@@ -23,7 +23,8 @@ SRCS.softfloat+=__aeabi_dcmpun.c __aeabi_fcmpun.c
 SRCS.softfloat+=eqsf2.c nesf2.c gtsf2.c gesf2.c ltsf2.c lesf2.c negsf2.c \
 		eqdf2.c nedf2.c gtdf2.c gedf2.c ltdf2.c ledf2.c negdf2.c \
 		eqtf2.c netf2.c gttf2.c getf2.c lttf2.c letf2.c negtf2.c \
-		nexf2.c gtxf2.c gexf2.c negxf2.c unordsf2.c unorddf2.c
+		nexf2.c gtxf2.c gexf2.c negxf2.c \
+		unordsf2.c unorddf2.c unordtf2.c
 .endif
 
 SRCS+=		${SRCS.softfloat}
@@ -32,7 +33,8 @@ SRCS+=		${SRCS.softfloat}
 .if defined(HAVE_GCC) && ${HAVE_GCC} >= 45
 .if (${MACHINE_CPU} == "arm")
 # See doc/HACKS for more information.
-COPTS.softfloat.c+=	-Wno-enum-compare -fno-tree-vrp
+COPTS.softfloat.c+=	-Wno-enum-compare
+COPTS.softfloat.c+=	${${ACTIVE_CXX} == "gcc":? -fno-tree-vrp :}
 .elif (${MACHINE_CPU} == "mips" || \
      ${MACHINE_CPU} == "sh3")
 COPTS.softfloat.c+=	-Wno-enum-compare
