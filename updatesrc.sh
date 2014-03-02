@@ -81,7 +81,7 @@ checkoutcvs ()
 	ln -s . src
 
 	# now, do the real checkout
-	echo '>> step 1: doing cvs checkout'
+	echo '>> step 2: doing cvs checkout'
 	lsfiles | xargs ${CVS} ${CVSFLAGS} co -P \
 	    -D "${NBSRC_CVSDATE}" || die checkout failed
 
@@ -120,18 +120,26 @@ githubdate ()
 
 	set -e
 
+	echo '>> step 1: cloning git repository'
 	${GIT} clone -n -b netbsd-cvs ${GITREPOPUSH} ${SRCDIR}
 
 	# checkoutcvs does cd to SRCDIR
 	checkoutcvs
 
-	echo '>> adding files to the "netbsd-cvs" branch'
+	echo '>> step 3: adding files to the "netbsd-cvs" branch'
 	${GIT} add -A
 	echo '>> committing'
 	${GIT} commit -m "NetBSD cvs for git rev ${gitrev}"
-	echo '>> merging "netbsd-cvs" to "master"'
+	echo '>> step 4: merging "netbsd-cvs" to "master"'
 	${GIT} checkout master
-	${GIT} merge netbsd-cvs
+	${GIT} merge -m 'merge branch "netbsd-cvs" to "master"' netbsd-cvs
+
+	echo '>> final step: commit updatedsrc.sh'
+	cp ../updatesrc.sh .
+	${GIT} commit updatesrc.sh
+
+	echo '>> Done.  Remember to push ./newsrc after testing'
+	echo '>> Use "git diff HEAD^^" to review changes'
 
 	set +e
 }
