@@ -44,12 +44,12 @@ lsfiles () {
 	files lib/lib		c crypt ipsec m npf pci prop pthread util y
 	files libexec/		ld.elf_so
 
-	files bin/		cat cp dd df ln ls mkdir mv rm
+	files bin/		cat cp dd df ln ls mkdir mv rm rmdir
 
 	files sbin/		cgdconfig
 	files sbin/		disklabel dump fsck fsck_ffs ifconfig mknod
 	files sbin/		modstat mount mount_ffs newfs ping ping6
-	files sbin/		raidctl rndctl route sysctl umount
+	files sbin/		raidctl reboot rndctl route sysctl umount
 
 	files usr.bin/		kdump ktrace
 	files usr.sbin/		ndp npf pcictl vnconfig
