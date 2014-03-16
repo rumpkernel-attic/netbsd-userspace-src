@@ -52,7 +52,7 @@ lsfiles () {
 	files sbin/		raidctl reboot rndctl route setkey sysctl umount
 
 	files usr.bin/		kdump ktrace
-	files usr.sbin/		arp ndp npf pcictl vnconfig
+	files usr.sbin/		arp dumpfs ndp npf pcictl vnconfig
 
 	files external/bsd/	flex libpcap tcpdump
 	files crypto/		Makefile.openssl
