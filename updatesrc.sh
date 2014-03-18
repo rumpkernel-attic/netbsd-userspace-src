@@ -41,12 +41,12 @@ NBSRC_EXTRA=''
 files () { pfx=$1; shift; for arg in $* ; do echo src/${pfx}${arg} ; done }
 
 lsfiles () {
-	files lib/lib		c crypt ipsec m npf pci prop pthread util y z
+	files lib/lib		c crypt ipsec m npf pci prop pthread rmt util y z
 	files libexec/		ld.elf_so
 
 	files bin/		cat cp dd df ln ls mkdir mv pax rm rmdir
 
-	files sbin/		cgdconfig dhcpcd
+	files sbin/		cgdconfig
 	files sbin/		disklabel dump fsck fsck_ffs ifconfig mknod
 	files sbin/		modstat mount mount_ffs newfs ping ping6
 	files sbin/		raidctl reboot rndctl route setkey sysctl umount
