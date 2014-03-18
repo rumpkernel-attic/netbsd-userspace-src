@@ -1,4 +1,5 @@
 A D/cgdconfig////
+A D/dhcpcd////
 A D/disklabel////
 A D/dump////
 A D/fsck////
@@ -18,3 +19,4 @@ A D/route////
 A D/setkey////
 A D/sysctl////
 A D/umount////
+R D/dhcpcd////
