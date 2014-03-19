@@ -2,7 +2,11 @@ A D/cgdconfig////
 A D/disklabel////
 A D/dump////
 A D/fsck////
+A D/fsck_ext2fs////
 A D/fsck_ffs////
+A D/fsck_lfs////
+A D/fsck_msdos////
+A D/fsck_v7fs////
 A D/ifconfig////
 A D/mknod////
 A D/modstat////
