@@ -10,6 +10,11 @@ A D/mount////
 A D/mount_ffs////
 A D/newfs////
 A D/newfs_v7fs////
+A D/newfs_msdos////
+A D/newfs_ext2fs////
+A D/newfs_lfs////
+A D/newfs_sysvbfs////
+A D/newfs_udf////
 A D/ping////
 A D/ping6////
 A D/raidctl////
