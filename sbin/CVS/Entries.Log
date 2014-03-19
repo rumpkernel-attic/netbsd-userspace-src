@@ -9,6 +9,7 @@ A D/modstat////
 A D/mount////
 A D/mount_ffs////
 A D/newfs////
+A D/newfs_v7fs////
 A D/ping////
 A D/ping6////
 A D/raidctl////
