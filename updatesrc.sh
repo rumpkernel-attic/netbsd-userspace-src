@@ -49,7 +49,9 @@ lsfiles () {
 
 	files sbin/		cgdconfig
 	files sbin/		disklabel dump fsck fsck_ffs ifconfig mknod
-	files sbin/		modstat mount mount_ffs newfs newfs_v7fs
+	files sbin/		modstat mount mount_ffs newfs
+	files sbin/		newfs_v7fs newfs_msdos newfs_ext2fs
+	files sbin/		newfs_lfs newfs_sysvbfs newfs_udf
 	files sbin/		ping ping6 raidctl reboot
 	files sbin/		rndctl route setkey sysctl umount
 
