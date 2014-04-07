@@ -59,6 +59,7 @@ lsfiles () {
 
 	files usr.bin/		kdump ktrace
 	files usr.sbin/		arp dumpfs makefs ndp npf pcictl vnconfig
+	files usr.sbin/		wlanctl
 
 	files external/bsd/	flex libpcap tcpdump
 	files crypto/		Makefile.openssl
