@@ -35,7 +35,8 @@
 NBSRC_CVSDATE="20140317 2200UTC"
 NBSRC_EXTRA='
     20140408 0220UTC:
-	src/crypto/external/bsd/openssl/dist'
+	src/crypto/external/bsd/openssl/dist
+	src/external/bsd/libpcap/include/config.h'
 
 #
 # BEGIN LIST OF FILES
@@ -63,7 +64,7 @@ lsfiles () {
 	files usr.sbin/		arp dumpfs makefs ndp npf pcictl vnconfig
 	files usr.sbin/		wlanctl
 
-	files external/bsd/	flex libpcap tcpdump
+	files external/bsd/	flex libpcap tcpdump wpa
 	files crypto/		Makefile.openssl
 	files crypto/dist/	ipsec-tools
 	files crypto/external/bsd/	openssl
