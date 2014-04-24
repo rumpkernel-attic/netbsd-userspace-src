@@ -1,4 +1,4 @@
-/*	$NetBSD: inode.c,v 1.70 2013/12/02 18:46:52 bouyer Exp $	*/
+/*	$NetBSD: inode.c,v 1.71 2014/04/05 12:32:27 justin Exp $	*/
 
 /*
  * Copyright (c) 1980, 1986, 1993
@@ -34,7 +34,7 @@
 #if 0
 static char sccsid[] = "@(#)inode.c	8.8 (Berkeley) 4/28/95";
 #else
-__RCSID("$NetBSD: inode.c,v 1.70 2013/12/02 18:46:52 bouyer Exp $");
+__RCSID("$NetBSD: inode.c,v 1.71 2014/04/05 12:32:27 justin Exp $");
 #endif
 #endif /* not lint */
 
