@@ -92,7 +92,7 @@ checkoutcvs ()
 
 	# now, do the real checkout
 	echo '>> step 2: doing cvs checkout'
-	lsfiles | xargs ${CVS} ${CVSFLAGS} co -P \
+	lsfiles | xargs ${CVS} ${CVSFLAGS} export \
 	    -D "${NBSRC_CVSDATE}" || die checkout failed
 
 	IFS=';'
@@ -102,7 +102,8 @@ checkoutcvs ()
 		unset IFS
 		date=${1}
 		dirs=${2}
-		${CVS} ${CVSFLAGS} co -P -D "${date}" ${dirs} || die co2
+		rm -rf ${dirs}
+		${CVS} ${CVSFLAGS} export -D "${date}" ${dirs} || die co2
 	done
 
 	# One silly workaround for case-insensitive file systems and cvs.
