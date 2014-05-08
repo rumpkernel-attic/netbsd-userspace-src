@@ -51,7 +51,7 @@ lsfiles () {
 	files sbin/		disklabel dump fsck fsck_ext2fs fsck_ffs
 	files sbin/		fsck_lfs fsck_msdos fsck_v7fs
 	files sbin/		ifconfig mknod
-	files sbin/		modstat mount mount_ffs newfs
+	files sbin/		modstat mount mount_ffs mount_tmpfs newfs
 	files sbin/		newfs_v7fs newfs_msdos newfs_ext2fs
 	files sbin/		newfs_lfs newfs_sysvbfs newfs_udf
 	files sbin/		ping ping6 raidctl reboot
