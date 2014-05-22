@@ -45,7 +45,7 @@ lsfiles () {
 	files lib/lib		pthread rmt util y z
 	files libexec/		ld.elf_so
 
-	files bin/		cat cp dd df ln ls mkdir mv pax rm rmdir
+	files bin/		cat cp dd df ed ln ls mkdir mv pax rm rmdir
 
 	files sbin/		cgdconfig
 	files sbin/		disklabel dump fsck fsck_ext2fs fsck_ffs
