@@ -33,7 +33,9 @@
 
 # date for NetBSD sources
 NBSRC_CVSDATE="20140526 1100UTC"
-NBSRC_EXTRA=''
+NBSRC_EXTRA='
+    20140616 1200UTC:
+	src/crypto/external/bsd/openssl'
 
 #
 # BEGIN LIST OF FILES
