@@ -1,6 +1,7 @@
 #	$NetBSD: Makefile,v 1.83 2013/10/09 22:33:41 matt Exp $
 #
 
+LIB=	pthread
 WARNS?=	5
 
 .include <bsd.own.mk>
@@ -31,8 +32,6 @@ CPPFLAGS+=	-D__LIBPTHREAD_SOURCE__ -D__LIBC_THREAD_STUBS
 
 # XXX: This crappy poke at libc's internals needs to be fixed.
 CPPFLAGS+=-I${NETBSDSRCDIR}/sys -I${.CURDIR}/../libc
-
-LIB=	pthread
 
 #
 # NOTE: When you create a new file for libpthread, make sure that pthread.c
