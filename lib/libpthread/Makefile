@@ -42,7 +42,9 @@ LIB=	pthread
 SRCS=	pthread.c 
 SRCS+=	pthread_attr.c
 SRCS+=	pthread_barrier.c
+.if ${PTHREAD_CANCELSTUB:Uyes} != 'no'
 SRCS+=	pthread_cancelstub.c
+.endif
 SRCS+=	pthread_cond.c
 SRCS+=	pthread_lock.c 
 SRCS+=	pthread_misc.c
