@@ -41,7 +41,7 @@ CPPFLAGS+=-I${NETBSDSRCDIR}/sys -I${.CURDIR}/../libc
 SRCS=	pthread.c 
 SRCS+=	pthread_attr.c
 SRCS+=	pthread_barrier.c
-.if ${PTHREAD_CANCELSTUB:Uyes} != 'no'
+.if ${PTHREAD_CANCELSTUB:Uyes} != "no"
 SRCS+=	pthread_cancelstub.c
 .endif
 SRCS+=	pthread_cond.c
