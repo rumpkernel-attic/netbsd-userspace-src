@@ -1,3 +1,5 @@
+_DEPRECATED: use src-netbsd.  This repository is scheduled for removal in 6/2015_
+
 netbsd-userspace-src
 ====================
 
